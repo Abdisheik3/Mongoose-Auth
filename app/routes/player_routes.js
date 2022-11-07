@@ -29,7 +29,7 @@ const router = express.Router()
 
 //* INDEX
 //* /Players
-router.get('/players', requireToken, (req, res, next) => {
+router.get('/players', (req, res, next) => {
     Player.find()
         .then(players => {
             return players.map(player => player)
@@ -42,7 +42,7 @@ router.get('/players', requireToken, (req, res, next) => {
 
 //* SHOW
 //* /players/:id
-router.get('/players/:id', requireToken, (req, res, next) => {
+router.get('/players/:id', (req, res, next) => {
     Player.findById(req.params.id)
     .then(handle404)
     .then(player => {
